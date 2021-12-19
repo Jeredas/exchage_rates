@@ -1,10 +1,9 @@
 const Router = require('express');
 const router = new Router();
-const valueController = require('../controllers/valuesController')
+const ratesController = require('../controllers/controller')
 
-router.get('/values', (req, res) => {
-    valueController.getValues(req, res)
-});
 
+router.get('/rates/:CUR_Abbreviation&:CUR_Amount', ratesController.getConverted)
+//router.get('/rates/', ratesController.getRates)
 
 module.exports = router;
