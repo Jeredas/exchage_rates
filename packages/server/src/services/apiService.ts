@@ -5,8 +5,15 @@ const RATES_URL = process.env.API_RATESLIST_URL || "https://www.nbrb.by/api/exra
 class ApiService {
     rates: any[] = [];
     public async getRates() {
-        this.rates = await axios(RATES_URL).then(res => res.data);;
-        return { BYR_Amount: 1, CUR_Rates: this.rates };
+        this.rates = await axios(RATES_URL).then(res => res.data);
+        console.log(this.rates)
+        this.rates = [...this.rates,{Cur_ID:1,
+            Date:"2021-12-20T00:00:00",
+            Cur_Abbreviation:"BYR",
+            Cur_Scale:1,
+            Cur_Name:"Белорусский рубль",
+            Cur_OfficialRate:1}] ;
+            return this.rates
     }
     public async convert(params) {
         if (this.rates = []) {
@@ -24,7 +31,7 @@ class ApiService {
                 Cur_Abbreviation: rate.Cur_Abbreviation
             }
         })
-        return { BYR_Amount: BYR_Amount.toFixed(4), CUR_Rates };
+        return CUR_Rates;
     }
 }
 const apiService = new ApiService()
