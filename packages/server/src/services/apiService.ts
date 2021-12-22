@@ -1,18 +1,22 @@
+import { IRate } from "../utils/interfaces";
+import { zeroCutter } from "../utils/zeroCutter";
 
 const axios = require('axios')
-const RATES_URL = process.env.API_RATESLIST_URL || "https://www.nbrb.by/api/exrates/rates?periodicity=0";
+console.log(process.env.API_RATESLIST_URL)
+const RATES_URL = process.env.API_RATESLIST_URL;
 
 class ApiService {
-    rates: any[] = [];
+    rates: IRate[] = [];
     public async getRates() {
         this.rates = await axios(RATES_URL).then(res => res.data);
-        console.log(this.rates)
-        this.rates = [...this.rates,{Cur_ID:1,
-            Date:"2021-12-20T00:00:00",
+        this.rates = [...this.rates,{
+            Cur_ID:1,
+            Date:`${Date.now()}`,
             Cur_Abbreviation:"BYR",
             Cur_Scale:1,
             Cur_Name:"Белорусский рубль",
-            Cur_OfficialRate:1}] ;
+            Cur_OfficialRate:1
+        }] ;
             return this.rates
     }
     public async convert(params) {
@@ -26,12 +30,26 @@ class ApiService {
         })
         const BYR_Amount = Current_CUR.Cur_OfficialRate * CUR_Amount / Current_CUR.Cur_Scale;
         const CUR_Rates = this.rates.map((rate) => {
+            const check = rate.Cur_Abbreviation === CUR_Abbreviation
             return {
-                CUR_Amount: (BYR_Amount / rate.Cur_OfficialRate).toFixed(4),
-                Cur_Abbreviation: rate.Cur_Abbreviation
+                CUR_Amount: !check? zeroCutter((BYR_Amount / rate.Cur_OfficialRate * rate.Cur_Scale).toFixed(4)) : undefined,
+                Cur_Abbreviation: rate.Cur_Abbreviation,
+                Cur_Name: rate.Cur_Name
             }
         })
         return CUR_Rates;
+    }
+    public getCurNames = async () => {
+        if (this.rates = []) {
+            await this.getRates()
+        };
+        return this.rates.map((rate)=>{
+            return {
+                Cur_Name:rate.Cur_Name,
+                Cur_Abbreviation:rate.Cur_Abbreviation
+                
+            }
+        })
     }
 }
 const apiService = new ApiService()

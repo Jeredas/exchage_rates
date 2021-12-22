@@ -5,7 +5,7 @@ const ratesRouter  = require('../src/router/router');
 
 const app = express()
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 async function start() {
     try {
         app.use(cors());
@@ -15,7 +15,7 @@ async function start() {
             console.log('Server is listening on PORT:' + PORT);
         });
     } catch (e) {
-
+        console.log(e)
     }
 }
 start()

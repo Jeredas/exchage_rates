@@ -6,10 +6,10 @@ class RatesController {
         res.json(converted);
 
     }
-    //  async  setRates(req,res) {
-    //     const restRates = await ratesService.getRates();
-    //     //res.json(restRates)
-    // }
+     async  getCurNames(req,res) {
+        const names = await ratesService.getCurNames();
+        res.json(names)
+    }
 }
  
 
