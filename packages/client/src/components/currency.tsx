@@ -37,12 +37,28 @@ export const Currency = () => {
         setUnDisplayedCurs(filtered);
         setVisible('invisible');
     }
+    const handleRemove = (abbreviation:string) => {
+        if(!config.restrictedCurrencies.includes(abbreviation)) {
+            const searched = displayedCurs.find((curr)=>{
+                return curr.Cur_Abbreviation === abbreviation
+            })
+            if(undisplayedCurs && searched){
+                setUnDisplayedCurs([...undisplayedCurs, searched])
+            }
+            
+            const filtered = displayedCurs.filter((curr) => {
+                return curr.Cur_Abbreviation !== abbreviation
+            });
+            setUnDisplayedCurs(filtered);
+        }
+
+    }
     return (
         <div className='main_wrapper'>
             {displayedCurs.map((rate) => {
                 return rates.map((curr) => {
                     if(curr.Cur_Abbreviation === rate.Cur_Abbreviation){
-                    return <CurrencyInput rate={curr} onChange={(rate) => handleInput(rate)} />
+                    return <CurrencyInput rate={curr} onChange={(rate) => handleInput(rate)} onRemove={(abbreviation)=>handleRemove(abbreviation)} />
                 }});
             }
             )}

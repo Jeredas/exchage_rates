@@ -38,12 +38,10 @@
             "Cur_Name": "Болгарский лев",
             "Cur_Abbreviation": "BGN"
         },
-        
         {
             "Cur_Name": "Датская крона",
             "Cur_Abbreviation": "DKK"
         },
-       
         {
             "Cur_Name": "Иен",
             "Cur_Abbreviation": "JPY"
@@ -80,7 +78,6 @@
             "Cur_Name": "Норвежская крона",
             "Cur_Abbreviation": "NOK"
         },
-       
         {
             "Cur_Name": "СДР (Специальные права заимствования)",
             "Cur_Abbreviation": "XDR"
@@ -117,5 +114,15 @@
             "Cur_Name": "Швейцарский франк",
             "Cur_Abbreviation": "CHF"
         }
+    ],
+    "restrictedCurrencies": [
+        "RUB",
+        "BYR",
+        "USD",
+        "EUR",
+        "Злотый",
+        "PLN",
+        "Гривна",
+        "UAH"
     ]
 }

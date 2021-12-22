@@ -1,8 +1,13 @@
 import React, { ChangeEvent, useState } from "react";
 import { IRate } from "../utils/interfaces";
+import rates from '../utils/starCurrencies.json'
 
-export const CurrencyInput = (props: { rate: IRate, onChange: (rate: IRate) => void }) => {
-    const [currentValue, setCurrentValaue] = useState('1')
+export const CurrencyInput = (props: { rate: IRate, onChange: (rate: IRate) => void ,onRemove:(abbreviation:string)=>void}) => {
+    const [currentValue, setCurrentValaue] = useState('1');
+    const [allowRemove,setAllowRemove] = useState(false);
+    // if(rates.restrictedCurrencies.includes(props.rate.Cur_Abbreviation)){
+    //     setAllowRemove(true)
+    // }
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (Number(e.target.value) === NaN || e.target.value === "") {
             props.onChange({
@@ -32,6 +37,7 @@ export const CurrencyInput = (props: { rate: IRate, onChange: (rate: IRate) => v
                     pattern="[0-9]{20}" />
                 <div className="currency_name">{props.rate.Cur_Name}</div>
             </div>
+           { true  && <div className="remove_currency" onClick={()=>props.onRemove(props.rate.Cur_Abbreviation)}>X</div>}
 
         </div>)
 }
