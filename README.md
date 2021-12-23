@@ -1,1 +1,1 @@
-# exchage_rates
+# rates_server
