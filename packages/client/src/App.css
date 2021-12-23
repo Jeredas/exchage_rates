@@ -1,0 +1,65 @@
+.main_wrapper {
+  border: 5px double #7fb6c9;
+  color: #124d66;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  background-color: #c7edfec4;
+  padding: 10px;
+}
+#root{
+  height: 100vh;
+background-image: url(../public/bg.jpg);
+background-size: cover;
+background-attachment: fixed;
+  display: flex;
+  align-items: center;
+}
+.currency_wrapper {
+  display: flex;
+}
+.curr_abbr {
+  display: flex;
+  padding-top: 10px;
+  width: 50px;
+  justify-content: flex-end;
+}
+.visible {
+  visibility: all;;
+}
+.invisible {
+  visibility: hidden;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  
+  -webkit-appearance: none;
+ 
+}
+.input_field{
+  width: 200px;
+  margin: 5px 0 3px 5px;
+  outline: none;
+  color:#124d66;
+}
+.remove_currency {
+  cursor: pointer;
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-image: url('../public/cross.png');
+  background-size: cover;
+}
+.currency_name {
+  font-size: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+.select_option:hover {
+  background-color: chocolate;
+}
