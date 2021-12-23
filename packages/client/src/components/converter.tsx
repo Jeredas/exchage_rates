@@ -43,12 +43,13 @@ export const Converter = () => {
                 {displayed.map((rate) => {
                     return rates.map((curr) => {
                         if (curr.Cur_Abbreviation === rate.Cur_Abbreviation) {
-                            return <CurrencyInput rate={curr}
+                            return (
+                            <CurrencyInput rate={curr}
                                 onChange={(rate) => handleInput(rate)}
                                 onRemove={(abbreviation) => handleRemove(abbreviation)}
                                 key={curr.Cur_Abbreviation}
                             />
-                        }
+                            )}
                     });
                 }
                 )}
