@@ -9,7 +9,6 @@ const PORT = process.env.PORT;
 async function start() {
     try {
         app.use(cors());
-        app.options('*', cors());
         app.use('/api', ratesRouter );
         app.listen(PORT, () => {
             console.log('Server is listening on PORT:' + PORT);

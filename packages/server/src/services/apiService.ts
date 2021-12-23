@@ -14,7 +14,7 @@ class ApiService {
             Date:`${Date.now()}`,
             Cur_Abbreviation:"BYR",
             Cur_Scale:1,
-            Cur_Name:"Белорусский рубль",
+            Cur_Name:"Белорусских рублей",
             Cur_OfficialRate:1
         }] ;
             return this.rates

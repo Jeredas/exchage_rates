@@ -1,11 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Currency } from './components/currency';
+import { Converter } from './components/converter';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 function App() {
   return (
-    <Currency/>
+    <Provider store={store}>
+      <Converter/>
+    </Provider>
   );
 }
 
