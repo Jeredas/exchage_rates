@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../store/hooks/useTypedSelector';
 import { display, hide } from '../store/slices/currenciesSlice';
 
+const SERVER_URL= 'https://currenciesrates.herokuapp.com/api/rates/'
+
 export const Converter = () => {
     const [rates, setRates] = useState<IRate[]>([]);
     const [visible, setVisible] = useState('invisible');
@@ -15,7 +17,7 @@ export const Converter = () => {
     }, []);
 
     const getRates = (abbreviation: string, value: string) => {
-        fetch(`http://localhost:7000/api/rates/${abbreviation}&${value}`).then(
+        fetch(`${SERVER_URL}${abbreviation}&${value}`).then(
             res => res.json()
         ).then(res => {
             setRates(res);
@@ -39,7 +41,8 @@ export const Converter = () => {
     }
         return (
             <div className='main_wrapper'>
-                <h1> Конвертер валют </h1>
+                <h1 className='title'> Конвертер валют </h1>
+                <span className='title_info'>Официальный курс, устанавливаемый Национальным банком Республики Беларусь на {new Date(Date.now()).toLocaleString().split(',')[0]}</span>
                 {displayed.map((rate) => {
                     return rates.map((curr) => {
                         if (curr.Cur_Abbreviation === rate.Cur_Abbreviation) {
@@ -52,7 +55,8 @@ export const Converter = () => {
                     });
                 }
                 )}
-                <div onClick={() => {
+                <div className='currency_add'
+                    onClick={() => {
                     if (visible === 'invisible') {
                         setVisible('visible')
                     } else {

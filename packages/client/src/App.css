@@ -7,27 +7,31 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
   margin: 0 auto;
   background-color: #c7edfec4;
   padding: 10px;
+  align-items: center;
 }
 #root{
   height: 100vh;
-background-image: url(../public/bg.jpg);
-background-size: cover;
-background-attachment: fixed;
+  background-image: url(../public/bg.jpg);
+  background-size: cover;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
 }
 .currency_wrapper {
+  position: relative;
   display: flex;
 }
 .curr_abbr {
+  font-size: 30px;
   display: flex;
   padding-top: 10px;
   width: 50px;
   justify-content: flex-end;
+  margin-right: 20px;
 }
 .visible {
   visibility: all;;
@@ -42,24 +46,38 @@ input[type="number"]::-webkit-inner-spin-button {
  
 }
 .input_field{
-  width: 200px;
+  width: 300px;
+  height: 30px;
   margin: 5px 0 3px 5px;
   outline: none;
   color:#124d66;
+  font-size: 20px;
+  font-weight: 600;
 }
 .remove_currency {
   cursor: pointer;
   display: block;
-  width: 12px;
-  height: 12px;
+  width: 24px;
+  height: 24px;
   background-image: url('../public/cross.png');
   background-size: cover;
+  position: absolute;
+  right: -30px;
+  top: 5px;
 }
 .currency_name {
-  font-size: 8px;
+  font-size: 18px;
     display: flex;
     justify-content: flex-end;
 }
-.select_option:hover {
-  background-color: chocolate;
+.currency_add {
+  font-size: 18px;
+  display: block;
+  margin: 10px;
+}
+.title_info {
+  width: 90%;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
 }

@@ -8,15 +8,6 @@ class RatesController {
             console.log(e);
         }
     }
-     async  getCurNames(req,res) {
-         try {
-            const names = await ratesService.getCurNames();
-            res.json(names)
-         } catch(e) {
-            console.log(e);
-         }
-        
-    }
 }
  
 
