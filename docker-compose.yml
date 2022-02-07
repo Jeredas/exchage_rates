@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: rates_server3
+    restart: unless-stopped
+    env_file: ./packages/server/.env
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/packages/server/server
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - app-network
+    command: npm --workspace=server run start
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  node_modules:  
